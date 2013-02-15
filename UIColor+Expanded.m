@@ -719,6 +719,14 @@ static NSMutableDictionary *_CrayolaNameCache = nil;
 	return [UIColor colorWithRGBHex:hexNum];
 }
 
+// Returns a UIColor by scanning the string for a hex number and passing that to +[UIColor colorWithRGBHex:]
+// Skips any leading whitespace and ignores any trailing characters
+// Color's opacity is determined by alpha value between 0.0 and 1.0
++ (UIColor *)colorWithHexString:(NSString *)stringToConvert alpha:(CGFloat)alpha
+{
+    return [[UIColor colorWithHexString:stringToConvert] colorWithAlphaComponent:alpha];
+}
+
 // Returns a UIColor by scanning the string for a hex number and passing that to +[UIColor colorWithRGBAHex:]
 // Skips any leading whitespace and ignores any trailing characters
 + (UIColor *)colorAndAlphaWithHexString:(NSString *)stringToConvert {
